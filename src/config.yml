@@ -1,0 +1,71 @@
+# PlayerHeads Configuration
+# Defaults/explanation:
+# pkonly: true                  [true/false]    When true trophies only drop when a player kills another player (as opposed to self drowning, etc)
+# droprate: 0.05                [0.0 -> 1.0]    Chance that a trophy will drop when a player dies (1 is 100%, 0 is never)
+# lootingrate: 0.2              [0.0 -> 1.0]    Increases all droprates by lootingrate percent per looting level when a enchanted weapon is used
+# mobpkonly: true               [true/false]    When true mob trophies only drop when a player kills the mob (as opposed to a lava blade or fall death)
+# {MobName}droprate: 0.005      [0.0 -> 1.0]    Chance that a mob trophy will drop when it dies
+# fixcase: true                 [true/false]    When spawning/renaming heads, will attempt to make the input case insensitive
+# broadcast: true               [true/false]    Sends a message when someone gets beheaded
+# broadcastrange: 0             [positive int]  Radial distance in meters in which other players will hear the broadcast message (0 is unlimited)
+# antideathchest: false         [true/false]    Do not allow other plugins to fiddle with dropping player heads, makes certain they drop on the ground
+# dropboringplayerheads: false  [true/false]    Drop plain heads when a player dies, instead of the player's head
+pkonly: true
+droprate: 0.05
+lootingrate: 0.2
+mobpkonly: true
+creeperdroprate: 0.005
+zombiedroprate: 0.002
+skeletondroprate: 0.002
+witherskeletondroprate: 0.025
+spiderdroprate: 0.002
+endermandroprate: 0.002
+blazedroprate: 0.002
+horsedroprate: 0.002
+squiddroprate: 0.005
+silverfishdroprate: 0.005
+enderdragondroprate: 0.05
+slimedroprate: 0.001
+irongolemdroprate: 0.005
+mushroomcowdroprate: 0.002
+batdroprate: 0.005
+pigzombiedroprate: 0.002
+snowmandroprate: 0.002
+ghastdroprate: 0.005
+pigdroprate: 0.002
+villagerdroprate: 0.002
+sheepdroprate: 0.002
+cowdroprate: 0.002
+chickendroprate: 0.002
+ocelotdroprate: 0.005
+witchdroprate: 0.005
+magmacubedroprate: 0.001
+wolfdroprate: 0.002
+cavespiderdroprate: 0.002
+rabbitdroprate: 0.002
+guardiandroprate: 0.025
+huskdroprate: 0.004
+shulkerdroprate: 0.006
+vexdroprate: 0.002
+polarbeardroprate: 0.002
+witherdroprate: 1
+skeletonhorsedroprate: 0.004 
+vindicatordroprate: 0.005
+straydroprate: 0.003
+llamadroprate: 0.005
+evokerdroprate: 0.006
+donkeydroprate: 0.005
+muledroprate: 0.005
+elderguardiandroprate: 0.003
+endermitedroprate: 0.003
+zombiehorsedroprate: 0.003
+zombievillagerdroprate: 0.003
+parrotreddroprate: 0.005
+parrotbluedroprate: 0.005
+parrotcyandroprate: 0.005
+parrotgreendroprate: 0.005
+parrotgraydroprate: 0.005
+broadcast: true
+broadcastrange: 0
+antideathchest: false
+dropboringplayerheads: false
