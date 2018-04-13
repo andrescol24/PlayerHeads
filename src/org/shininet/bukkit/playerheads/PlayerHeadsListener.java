@@ -3,6 +3,7 @@ package org.shininet.bukkit.playerheads;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
 
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
@@ -25,6 +26,7 @@ import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerAnimationEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.shininet.bukkit.playerheads.events.FakeBlockBreakEvent;
 import org.shininet.bukkit.playerheads.events.MobDropHeadEvent;
@@ -195,8 +197,11 @@ public class PlayerHeadsListener implements Listener {
         }
     }
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerInteract(PlayerInteractEvent event) {
+        if(event.getHand() == EquipmentSlot.OFF_HAND){
+            return;
+        }
         if(event.getAction() == Action.RIGHT_CLICK_BLOCK){
             Block block = event.getClickedBlock();
             Player player = event.getPlayer();
@@ -255,7 +260,6 @@ public class PlayerHeadsListener implements Listener {
                 }
             }
         }
-        
     }
 
     @EventHandler(priority = EventPriority.LOWEST)
