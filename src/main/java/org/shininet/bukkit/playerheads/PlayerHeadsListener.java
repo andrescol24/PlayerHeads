@@ -77,7 +77,7 @@ public class PlayerHeadsListener implements Listener {
                 } else {
                     skullOwner = player.getName();
                 }
-                ItemStack drop = Tools.Skull(skullOwner);
+                ItemStack drop = Tools.createSkull(skullOwner);
                 PlayerDropHeadEvent dropHeadEvent = new PlayerDropHeadEvent(player, drop);
                 plugin.getServer().getPluginManager().callEvent(dropHeadEvent);
                 if (dropHeadEvent.isCancelled()) {
@@ -154,7 +154,7 @@ public class PlayerHeadsListener implements Listener {
                                 break;
                         }
                     }
-                    CustomSkullType customSkullType = CustomSkullType.valueOf(entityName);
+                    CustomMobHead customSkullType = CustomMobHead.valueOf(entityName);
                     EntityDeathHelper(event, customSkullType, Config.getDouble(customSkullType.name().replace("_", "").toLowerCase() + "droprate") * lootingrate);
                 } catch (IllegalArgumentException e) {
                 }   break;
@@ -175,9 +175,9 @@ public class PlayerHeadsListener implements Listener {
         ItemStack drop;
 
         if (type instanceof SkullType) {
-            drop = Tools.Skull((SkullType) type);
-        } else if (type instanceof CustomSkullType) {
-            drop = Tools.Skull((CustomSkullType) type);
+            drop = Tools.createSkull((SkullType) type);
+        } else if (type instanceof CustomMobHead) {
+            drop = Tools.createSkull((CustomMobHead) type);
         } else {
             return;
         }
@@ -212,10 +212,10 @@ public class PlayerHeadsListener implements Listener {
                     case PLAYER:
                         if (skullState.hasOwner()) {
                             String owner = skullState.getOwner();
-                            CustomSkullType skullType = CustomSkullType.get(owner);
+                            CustomMobHead skullType = CustomMobHead.get(owner);
                             if(skullType == null){
                                 owner = skullState.getOwningPlayer().getUniqueId().toString();
-                                skullType = CustomSkullType.get(owner);
+                                skullType = CustomMobHead.get(owner);
                             } if (skullType != null) {
                                 Tools.formatMsg(player, Lang.getString("CLICKINFO2"), skullType.getDisplayName());
                                 if (!owner.equals(skullType.getOwner())) {
@@ -247,11 +247,11 @@ public class PlayerHeadsListener implements Listener {
                     }
                 } else if ((skullState.getSkullType() == SkullType.PLAYER) && (skullState.hasOwner())) {
                     String owner = skullState.getOwner();
-                    CustomSkullType skullType = CustomSkullType.get(owner);
+                    CustomMobHead skullType = CustomMobHead.get(owner);
                     
                     if(skullType == null){
                         owner = skullState.getOwningPlayer().getUniqueId().toString();
-                        skullType = CustomSkullType.get(owner);
+                        skullType = CustomMobHead.get(owner);
                     } 
                     if ((skullType != null) && (!owner.equals(skullType.getOwner()))) {
                         skullState.setOwner(skullType.getOwner());
@@ -273,9 +273,9 @@ public class PlayerHeadsListener implements Listener {
             Skull skull = (Skull) block.getState();
             
             if (skull.hasOwner()) {
-                CustomSkullType skullType = CustomSkullType.get(skull.getOwner());
+                CustomMobHead skullType = CustomMobHead.get(skull.getOwner());
                 if (skullType == null)
-                    skullType = CustomSkullType.get(skull.getOwningPlayer().getUniqueId().toString());
+                    skullType = CustomMobHead.get(skull.getOwningPlayer().getUniqueId().toString());
                 
                 if (skullType != null) {
 
@@ -289,7 +289,7 @@ public class PlayerHeadsListener implements Listener {
                         event.setCancelled(true);
                     } else {
                         Location location = block.getLocation();
-                        ItemStack item = Tools.Skull(skullType);
+                        ItemStack item = Tools.createSkull(skullType);
 
                         event.setCancelled(true);
                         block.setType(Material.AIR);

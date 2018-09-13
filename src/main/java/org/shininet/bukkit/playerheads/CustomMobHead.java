@@ -1,16 +1,13 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-
 package org.shininet.bukkit.playerheads;
 
 import java.util.HashMap;
 
 /**
+ * Maintainer by xX_andrescol_Xx
+ * Enum of mobs heads that map heads name with owner name
  * @author meiskam
  */
-@SuppressWarnings("LeakingThisInConstructor")
-public enum CustomSkullType {
+public enum CustomMobHead {
 
     SPIDER("MHF_Spider", "Kelevra_V"), // Thanks Marc Watson
     ENDERMAN("MHF_Enderman", "Violit"), // Thanks Marc Watson
@@ -62,15 +59,15 @@ public enum CustomSkullType {
     private final String owner;
 
     private static class Holder {
-        static HashMap<String, CustomSkullType> map = new HashMap<>();
+        static HashMap<String, CustomMobHead> map = new HashMap<>();
     }
 
-    CustomSkullType(String owner) {
+    CustomMobHead(String owner) {
         this.owner = owner;
         Holder.map.put(owner, this);
     }
 
-    CustomSkullType(String owner, String... toConvert) {
+    CustomMobHead(String owner, String... toConvert) {
         this(owner);
         for (String key : toConvert) {
             Holder.map.put(key, this);
@@ -89,7 +86,7 @@ public enum CustomSkullType {
         return Lang.getString("HEAD_SPAWN_" + name());
     }
 
-    public static CustomSkullType get(String owner) {
+    public static CustomMobHead get(String owner) {
         return Holder.map.get(owner);
     }
 }

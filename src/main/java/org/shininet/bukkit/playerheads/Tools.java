@@ -1,7 +1,7 @@
 package org.shininet.bukkit.playerheads;
 
 import java.util.Set;
-import org.andrescol.playerheads.SkullGenerator;
+import org.andrescol.playerheads.MobHeadsFactory;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -41,7 +41,7 @@ public abstract class Tools {
     public static ItemStack Skull(String skullOwner, int quantity) {
         String skullOwnerLC = skullOwner.toLowerCase();
 
-        for (CustomSkullType skullType : CustomSkullType.values()) {
+        for (CustomMobHead skullType : CustomMobHead.values()) {
             if (skullOwnerLC.equals(skullType.getSpawnName().toLowerCase())) {
                 return Skull(skullType, quantity);
             }
@@ -85,13 +85,13 @@ public abstract class Tools {
         return skull;
     }
 
-    public static ItemStack Skull(CustomSkullType type) {
+    public static ItemStack Skull(CustomMobHead type) {
         return Skull(type, Config.defaultStackSize);
     }
 
-    public static ItemStack Skull(CustomSkullType type, int quantity) {
-        if(SkullGenerator.isAvalaible()){
-            ItemStack skull = SkullGenerator.getHead(type.name());
+    public static ItemStack Skull(CustomMobHead type, int quantity) {
+        if(MobHeadsFactory.isAvalaible()){
+            ItemStack skull = MobHeadsFactory.getHead(type.name());
             skull.setAmount(quantity);
             SkullMeta meta = (SkullMeta)skull.getItemMeta();
             meta.setDisplayName(type.getDisplayName());

@@ -1,7 +1,3 @@
-/* This Source Code Form is subject to the terms of the Mozilla Public
- * License, v. 2.0. If a copy of the MPL was not distributed with this
- * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
-
 package org.shininet.bukkit.playerheads;
 
 import java.util.ArrayList;
@@ -14,9 +10,9 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 /**
+ * Maintainer by xX_andrescol_Xx
  * @author meiskam
  */
-
 public class PlayerHeadsCommandExecutor implements CommandExecutor, TabCompleter {
 
     private final PlayerHeads plugin;
