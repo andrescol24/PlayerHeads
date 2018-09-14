@@ -79,7 +79,7 @@ public enum CustomMobHead {
     }
 
     public String getDisplayName() {
-        return Tools.format(Lang.getString("HEAD_" + name()));
+        return Tools.getMessage(Lang.getString("HEAD_" + name()));
     }
 
     public String getSpawnName() {

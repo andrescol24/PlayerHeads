@@ -90,11 +90,11 @@ public class PlayerHeadsListener implements Listener {
                 }   if (Config.getBoolean("broadcast")) {
                     String message;
                     if (killer == null) {
-                        message = Tools.format(Lang.getString("BEHEAD_GENERIC"), player.getDisplayName() + ChatColor.RESET);
+                        message = Tools.getMessage(Lang.getString("BEHEAD_GENERIC"), player.getDisplayName() + ChatColor.RESET);
                     } else if (killer == player) {
-                        message = Tools.format(Lang.getString("BEHEAD_SELF"), player.getDisplayName() + ChatColor.RESET);
+                        message = Tools.getMessage(Lang.getString("BEHEAD_SELF"), player.getDisplayName() + ChatColor.RESET);
                     } else {
-                        message = Tools.format(Lang.getString("BEHEAD_OTHER"), player.getDisplayName() + ChatColor.RESET, killer.getDisplayName() + ChatColor.RESET);
+                        message = Tools.getMessage(Lang.getString("BEHEAD_OTHER"), player.getDisplayName() + ChatColor.RESET, killer.getDisplayName() + ChatColor.RESET);
                     }
                     
                     int broadcastRange = Config.getInt("broadcastrange");
@@ -230,19 +230,19 @@ public class PlayerHeadsListener implements Listener {
                         }
                         break;
                     case CREEPER:
-                        Tools.formatMsg(player, Lang.getString("CLICKINFO2"), Tools.format(Lang.getString("HEAD_CREEPER")));
+                        Tools.formatMsg(player, Lang.getString("CLICKINFO2"), Tools.getMessage(Lang.getString("HEAD_CREEPER")));
                         break;
                     case SKELETON:
-                        Tools.formatMsg(player, Lang.getString("CLICKINFO2"), Tools.format(Lang.getString("HEAD_SKELETON")));
+                        Tools.formatMsg(player, Lang.getString("CLICKINFO2"), Tools.getMessage(Lang.getString("HEAD_SKELETON")));
                         break;
                     case WITHER:
-                        Tools.formatMsg(player, Lang.getString("CLICKINFO2"), Tools.format(Lang.getString("HEAD_WITHER")));
+                        Tools.formatMsg(player, Lang.getString("CLICKINFO2"), Tools.getMessage(Lang.getString("HEAD_WITHER")));
                         break;
                     case ZOMBIE:
-                        Tools.formatMsg(player, Lang.getString("CLICKINFO2"), Tools.format(Lang.getString("HEAD_ZOMBIE")));
+                        Tools.formatMsg(player, Lang.getString("CLICKINFO2"), Tools.getMessage(Lang.getString("HEAD_ZOMBIE")));
                         break;
                     case DRAGON:
-                        Tools.formatMsg(player, Lang.getString("CLICKINFO2"), Tools.format(Lang.getString("HEAD_ENDER_DRAGON")));
+                        Tools.formatMsg(player, Lang.getString("CLICKINFO2"), Tools.getMessage(Lang.getString("HEAD_ENDER_DRAGON")));
                         break;
                     }
                 } else if ((skullState.getSkullType() == SkullType.PLAYER) && (skullState.hasOwner())) {
