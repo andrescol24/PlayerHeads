@@ -1,9 +1,8 @@
 name: PlayerHeads
-version: 5.0-SkullGenerator
+version: 6.0.0
 description: Drops a player's head when s/he dies, also mob heads
 authors: [meiskam, xX_andrescol_Xx]
-
-
+api-version: 1.13
 main: org.shininet.bukkit.playerheads.PlayerHeads
 
 commands:
@@ -53,4 +52,4 @@ permissions:
     default: false
   playerheads.commandinfo:
     description: Allow player to display command info
-    default: true
+    default: false

@@ -54,12 +54,13 @@ public final class PlayerHeads extends JavaPlugin{
      */
     public void reload(){
     	// Disables
-        reloadConfig();
         Lang.disable();
         Config.disable();
         MobHeadsFactory.disable();
         
         // Enables
+        saveReourceFiles();
+        reloadConfig();
         Lang.init(this);
         Config.init(this);
         MobHeadsFactory.init(this);

@@ -51,4 +51,20 @@ public class Lang {
         properties.clear();
         properties = null;
     }
+    
+    /**
+     * Get the info plugin command
+     * @return Info plugin command
+     */
+    public static String getInfo() {
+    	String title = getString("COMMAND_INFO_TITLE");
+    	String spawn = Tools.getMessage(getString("COMMAND_INFO_SPAWN"), 
+    			getString("OPT_HEADNAME_OPTIONAL"),
+    			getString("OPT_RECEIVER_OPTIONAL"),
+    			getString("OPT_AMOUNT_OPTIONAL"));
+    	String reload = getString("COMMAND_INFO_RELOAD");
+    	StringBuilder builder = new StringBuilder();
+    	builder.append("\n").append(title).append("\n").append(spawn).append("\n").append(reload);
+    	return builder.toString();
+    }
 }
