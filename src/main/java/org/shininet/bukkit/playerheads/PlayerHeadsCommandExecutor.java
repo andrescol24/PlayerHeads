@@ -119,9 +119,9 @@ public class PlayerHeadsCommandExecutor implements CommandExecutor {
 		} else {
 			reciever = plugin.getServer().getPlayer(args[2]);
 			if (reciever == null) {
-				return Tools.getMessage("ERROR_NOT_ONLINE", args[2]);
+				return Tools.getMessage(Lang.getString("ERROR_NOT_ONLINE"), args[2]);
 			}
-			int quantity = (args[4] == null) ? 1 : Integer.parseInt(args[4]);
+			int quantity = (args.length == 4) ? Integer.parseInt(args[3]) : 1;
 			String headName = args[1];
 			if (headName.startsWith("#")) {
 				boolean added = Tools.addMobHead(reciever, headName, quantity);

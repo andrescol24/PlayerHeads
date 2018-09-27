@@ -64,7 +64,7 @@ public enum CustomMobHead {
     private static class Holder {
         static HashMap<String, CustomMobHead> map = new HashMap<>();
     }
-
+    
     CustomMobHead(String owner) {
         this.owner = owner;
         Holder.map.put(owner, this);

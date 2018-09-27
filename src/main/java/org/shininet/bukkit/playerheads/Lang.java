@@ -11,9 +11,8 @@ import java.util.logging.Level;
 
 
 /**
- * Maintainer by xX_andrescol_Xx
  * Static class that manages the language configuration for messaging
- * @author meiskam
+ * @author xX_andrescol_Xx
  */
 public class Lang {
 
