@@ -9,14 +9,17 @@ import java.nio.charset.Charset;
 import java.util.Properties;
 import java.util.logging.Level;
 
+import org.bukkit.ChatColor;
+
 
 /**
  * Static class that manages the language configuration for messaging
  * @author xX_andrescol_Xx
  */
-public class Lang {
+public final class Lang {
 
     private static Properties properties;
+    private static String PREFIX;
     private Lang() {}
     
     /**
@@ -38,6 +41,8 @@ public class Lang {
         
         try (InputStream input = new FileInputStream(langFile)){
             properties.load(new InputStreamReader(input, Charset.forName("UTF-8")));
+            String prefix = properties.getProperty("PREFIX");
+            PREFIX = ChatColor.translateAlternateColorCodes('&', prefix);
         }catch(IOException e){
             plugin.getLogger().log(Level.SEVERE, "The lang could not be started", e);
         }
@@ -57,13 +62,39 @@ public class Lang {
      */
     public static String getInfo() {
     	String title = getString("COMMAND_INFO_TITLE");
-    	String spawn = Tools.getMessage(getString("COMMAND_INFO_SPAWN"), 
+    	String spawn = getMessage(getString("COMMAND_INFO_SPAWN"), 
     			getString("OPT_HEADNAME_OPTIONAL"),
     			getString("OPT_RECEIVER_OPTIONAL"),
     			getString("OPT_AMOUNT_OPTIONAL"));
     	String reload = getString("COMMAND_INFO_RELOAD");
     	StringBuilder builder = new StringBuilder();
     	builder.append("\n").append(title).append("\n").append(spawn).append("\n").append(reload);
-    	return builder.toString();
+    	return ChatColor.translateAlternateColorCodes('&', builder.toString());
+    }
+    
+    /**
+     * Gets message replacing the string format %#% by values given and adding color
+     * @param key key of message
+     * @param replacement values to replace
+     * @return message
+     */
+    public static String getMessage(String key, String... replacement) {
+        String output = getString(key);
+        for (int i = 0; i < replacement.length; i++) {
+            output = output.replace("%" + (i + 1) + "%", replacement[i]);
+        }
+        return ChatColor.translateAlternateColorCodes('&', output);
+    }
+    
+    /**
+     * Gets message replacing the string format %#% by values given and adding color and the plugin 
+     * prefix
+     * @param key key of message
+     * @param replacement values to replace
+     * @return message
+     */
+    public static String getMessageWithPrefix(String key, String... replacement) {
+    	String message = getMessage(key, replacement);
+    	return PREFIX.concat(message);
     }
 }

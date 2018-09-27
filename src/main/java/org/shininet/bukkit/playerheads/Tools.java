@@ -1,7 +1,6 @@
 package org.shininet.bukkit.playerheads;
 
 import org.andrescol.playerheads.MobHeadsFactory;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
 
@@ -26,19 +25,5 @@ public abstract class Tools {
             inv.setItem(firstEmpty, MobHeadsFactory.getHead(headSpawnName, quantity));
             return true;
         }
-    }
-
-    /**
-     * Gets message replacing the string format %#% by values given and adding color
-     * @param text text to convert in message
-     * @param replacement values to replace
-     * @return message
-     */
-    public static String getMessage(String text, String... replacement) {
-        String output = text;
-        for (int i = 0; i < replacement.length; i++) {
-            output = output.replace("%" + (i + 1) + "%", replacement[i]);
-        }
-        return ChatColor.translateAlternateColorCodes('&', output);
     }
 }

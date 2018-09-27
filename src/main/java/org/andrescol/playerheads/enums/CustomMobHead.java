@@ -1,9 +1,7 @@
 package org.andrescol.playerheads.enums;
 
 import java.util.HashMap;
-
 import org.shininet.bukkit.playerheads.Lang;
-import org.shininet.bukkit.playerheads.Tools;
 
 /**
  * Maintainer by xX_andrescol_Xx
@@ -75,7 +73,7 @@ public enum CustomMobHead {
     }
 
     public String getDisplayName() {
-        return Tools.getMessage(Lang.getString("HEAD_" + name()));
+        return Lang.getMessage("HEAD_" + name());
     }
 
     public String getSpawnName() {
