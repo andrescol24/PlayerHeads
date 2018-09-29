@@ -62,7 +62,7 @@ public final class Lang {
      */
     public static String getInfo() {
     	String title = getString("COMMAND_INFO_TITLE");
-    	String spawn = getMessage(getString("COMMAND_INFO_SPAWN"), 
+    	String spawn = getMessage("COMMAND_INFO_SPAWN", 
     			getString("OPT_HEADNAME_OPTIONAL"),
     			getString("OPT_RECEIVER_OPTIONAL"),
     			getString("OPT_AMOUNT_OPTIONAL"));

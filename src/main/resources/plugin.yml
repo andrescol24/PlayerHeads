@@ -6,10 +6,10 @@ api-version: 1.13
 main: org.shininet.bukkit.playerheads.PlayerHeads
 
 commands:
-  PlayerHeads:
+  playerheads:
     description: Spawn a playerhead or edit playerheads config
-    aliases: ph
-    
+    aliases: [ph]
+    usage: /playerheads [spawn|reload] [woner] [receiver] [amount]
 permissions:
   playerheads.*:
     description: Gives all PlayerHeads permissions
@@ -52,4 +52,4 @@ permissions:
     default: false
   playerheads.commandinfo:
     description: Allow player to display command info
-    default: false
+    default: op
