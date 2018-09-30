@@ -3,8 +3,9 @@ package org.shininet.bukkit.playerheads;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.andrescol.playerheads.enums.CustomMobHead;
 import org.bukkit.configuration.file.FileConfiguration;
+
+import co.andrescol.playerheads.CustomMobHead;
 
 /**
  * 

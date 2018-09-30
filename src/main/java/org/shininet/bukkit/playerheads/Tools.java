@@ -1,8 +1,9 @@
 package org.shininet.bukkit.playerheads;
 
-import org.andrescol.playerheads.MobHeadsFactory;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.PlayerInventory;
+
+import co.andrescol.playerheads.MobHeadsFactory;
 
 /**
  * @author meiskam

@@ -3,11 +3,12 @@ package org.shininet.bukkit.playerheads;
 import java.io.File;
 import java.util.logging.Level;
 
-import org.andrescol.playerheads.MobHeadsFactory;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import co.andrescol.playerheads.MobHeadsFactory;
 
 /**
  * maintainer by xX_andrescol_Xx

@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 
-import org.andrescol.playerheads.enums.CustomMobHead;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -32,6 +31,8 @@ import org.bukkit.inventory.ItemStack;
 import org.shininet.bukkit.playerheads.events.FakeBlockBreakEvent;
 import org.shininet.bukkit.playerheads.events.MobDropHeadEvent;
 import org.shininet.bukkit.playerheads.events.PlayerDropHeadEvent;
+
+import co.andrescol.playerheads.CustomMobHead;
 
 
 /**

@@ -58,9 +58,13 @@ public class PlayerHeadsCommandExecutor implements CommandExecutor {
 				} else {
 					message = consoleSpawnCommand(args);
 				}
-
 				break;
 			default:
+				if (sender.hasPermission("playerheads.commandinfo") || isConsole) {
+					message = Lang.getInfo();
+				} else {
+					message = Lang.getMessageWithPrefix("ERROR_PERMISSION");
+				}
 			}
 		}
 		sender.sendMessage(message);
@@ -114,21 +118,21 @@ public class PlayerHeadsCommandExecutor implements CommandExecutor {
 		Player reciever = null;
 		// it needs receiver and head arguments
 		if (args.length < 3) {
-			return Lang.getMessage(Lang.getString("ERROR_CONSOLE_SPAWN"), Lang.getString("OPT_HEADNAME_REQUIRED"),
+			return Lang.getMessageWithPrefix("ERROR_CONSOLE_SPAWN", Lang.getString("OPT_HEADNAME_REQUIRED"),
 					Lang.getString("OPT_RECEIVER_REQUIRED"), Lang.getString("OPT_AMOUNT_OPTIONAL"));
 		} else {
 			reciever = plugin.getServer().getPlayer(args[2]);
 			if (reciever == null) {
-				return Lang.getMessage(Lang.getString("ERROR_NOT_ONLINE"), args[2]);
+				return Lang.getMessageWithPrefix("ERROR_NOT_ONLINE", args[2]);
 			}
 			int quantity = (args.length == 4) ? Integer.parseInt(args[3]) : 1;
 			String headName = args[1];
 			if (headName.startsWith("#")) {
 				boolean added = Tools.addMobHead(reciever, headName, quantity);
 				if (added) {
-					return Lang.getMessage(Lang.getString("HEAD_ADDED"), headName, reciever.getName());
+					return Lang.getMessageWithPrefix("HEAD_ADDED", headName, reciever.getName());
 				} else {
-					return Lang.getMessage(Lang.getString("HEAD_NOT_ADDED"), headName, reciever.getName());
+					return Lang.getMessageWithPrefix("HEAD_NOT_ADDED", headName, reciever.getName());
 				}
 			} else {
 				return "Player head does not suportted";
