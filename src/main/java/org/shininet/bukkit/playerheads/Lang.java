@@ -19,7 +19,7 @@ import org.bukkit.ChatColor;
 public final class Lang {
 
     private static Properties properties;
-    private static String PREFIX;
+    private static String prefix;
     private Lang() {}
     
     /**
@@ -42,7 +42,7 @@ public final class Lang {
         try (InputStream input = new FileInputStream(langFile)){
             properties.load(new InputStreamReader(input, Charset.forName("UTF-8")));
             String prefix = properties.getProperty("PREFIX");
-            PREFIX = ChatColor.translateAlternateColorCodes('&', prefix);
+            prefix = ChatColor.translateAlternateColorCodes('&', prefix);
         }catch(IOException e){
             plugin.getLogger().log(Level.SEVERE, "The lang could not be started", e);
         }
@@ -95,6 +95,6 @@ public final class Lang {
      */
     public static String getMessageWithPrefix(String key, String... replacement) {
     	String message = getMessage(key, replacement);
-    	return PREFIX.concat(message);
+    	return prefix.concat(message);
     }
 }

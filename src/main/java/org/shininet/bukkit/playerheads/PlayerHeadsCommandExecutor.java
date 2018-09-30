@@ -1,8 +1,12 @@
 package org.shininet.bukkit.playerheads;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -10,7 +14,7 @@ import org.bukkit.inventory.ItemStack;
  * 
  * @author xX_andrescol_Xx
  */
-public class PlayerHeadsCommandExecutor implements CommandExecutor {
+public class PlayerHeadsCommandExecutor implements CommandExecutor, TabCompleter {
 
 	private static final String CMD_RELOAD = "reload";
 	private static final String CMD_SPAWN = "spawn";
@@ -38,11 +42,8 @@ public class PlayerHeadsCommandExecutor implements CommandExecutor {
 		boolean isConsole = !(sender instanceof Player);
 		String message = null;
 		if (args.length == 0) {
-			if (sender.hasPermission("playerheads.commandinfo") || isConsole) {
-				message = Lang.getInfo();
-			} else {
-				message = Lang.getMessageWithPrefix("ERROR_PERMISSION");
-			}
+			message = (sender.hasPermission("playerheads.commandinfo") || isConsole) 
+						? Lang.getInfo() : Lang.getMessageWithPrefix("ERROR_PERMISSION");
 		} else {
 			switch (args[0].toLowerCase()) {
 			case CMD_RELOAD:
@@ -70,6 +71,13 @@ public class PlayerHeadsCommandExecutor implements CommandExecutor {
 		}
 		sender.sendMessage(message);
 		return true;
+	}
+	
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		ArrayList<String> list = new ArrayList<>();
+		list.add("Hola");
+		return list;
 	}
 
 	/**
