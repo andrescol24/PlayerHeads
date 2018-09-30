@@ -1,8 +1,6 @@
 package co.andrescol.playerheads;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.File;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -43,14 +41,15 @@ public final class MobHeadsFactory {
 	private void load(PlayerHeads plugin) {
 		Logger logger = plugin.getLogger();
 		YamlConfiguration headsFile = new YamlConfiguration();
-		try (InputStream inputFile = MobHeadsFactory.class.getResourceAsStream("/heads.yml");
-				BufferedReader reader = new BufferedReader(new InputStreamReader(inputFile));) {
-			headsFile.load(reader);
+		try {
+			File file = new File(plugin.getDataFolder(), "heads.yml");
+			headsFile.load(file);
 			
 			for(CustomMobHead mobHead : CustomMobHead.values()) {
 				ItemStack head = headsFile.getItemStack(mobHead.name());
 				SkullMeta meta = (SkullMeta) head.getItemMeta();
 				meta.setDisplayName(mobHead.getDisplayName());
+				head.setItemMeta(meta);
 				
 				heads.put(mobHead.getOwner(), head);
 				heads.put(mobHead.getSpawnCommand(), head);
@@ -61,12 +60,12 @@ public final class MobHeadsFactory {
 				ItemStack item = new ItemStack(material);
 				SkullMeta meta = (SkullMeta) item.getItemMeta();
 				meta.setDisplayName(mobHead.getDisplayName());
-				
-				heads.put(mobHead.getSpawnName(), item);
+				item.setItemMeta(meta);
+				heads.put(mobHead.getSpawnCommand(), item);
 			}
 			logger.log(Level.FINE, "Loaded heads from heads.yml");
 		} catch (Exception e) {
-			logger.log(Level.SEVERE, "Could not load heads.yml because there has an error", e);
+			logger.log(Level.SEVERE, "Could not load heads.yml because there is an error", e);
 		}
 	}
 

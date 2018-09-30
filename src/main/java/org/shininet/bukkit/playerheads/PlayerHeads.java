@@ -74,12 +74,15 @@ public final class PlayerHeads extends JavaPlugin{
         getConfig().options().copyDefaults(true);
         File config = new File(getDataFolder(), "config.yml");
         File lang = new File(getDataFolder(), "lang.properties");
+        File heads = new File(getDataFolder(), "heads.yml");
         try{
             if(!config.exists()){
                 saveDefaultConfig();
             }
             if(!lang.exists())
                 saveResource("lang.properties", false);
+            if(!heads.exists())
+            	saveResource("heads.yml", true);
         }catch(Exception e){
             this.getLogger().log(Level.SEVERE, "Could not be saved plugin files", e);
         }

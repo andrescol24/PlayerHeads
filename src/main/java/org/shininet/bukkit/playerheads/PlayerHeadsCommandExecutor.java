@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 /**
  * 
@@ -91,13 +92,16 @@ public class PlayerHeadsCommandExecutor implements CommandExecutor {
 		} else if ((parameter.getReciever() == sender && sender.hasPermission("playerheads.spawn"))
 				|| parameter.getReciever().hasPermission("playerheads.spawn.forother")) {
 			if (parameter.getHeadName().startsWith("#")) {
-				boolean added = Tools.addMobHead(
+				ItemStack itemdded = Tools.addMobHead(
 						parameter.getReciever(), parameter.getHeadName(), parameter.getAmount());
 				
-				if (added) {
-					return Lang.getMessageWithPrefix("HEAD_ADDED", parameter.getReciever().getName());
+				if (itemdded != null) {
+					String displayName = itemdded.getItemMeta().getDisplayName();
+					return Lang.getMessageWithPrefix("HEAD_ADDED", displayName,
+							parameter.getReciever().getName());
 				} else {
-					return Lang.getMessageWithPrefix("HEAD_NOT_ADDED");
+					return Lang.getMessageWithPrefix("HEAD_NOT_ADDED",
+							parameter.getReciever().getName());
 				}
 			} else {
 				return "Player head does not suportted";
@@ -128,11 +132,12 @@ public class PlayerHeadsCommandExecutor implements CommandExecutor {
 			int quantity = (args.length == 4) ? Integer.parseInt(args[3]) : 1;
 			String headName = args[1];
 			if (headName.startsWith("#")) {
-				boolean added = Tools.addMobHead(reciever, headName, quantity);
-				if (added) {
-					return Lang.getMessageWithPrefix("HEAD_ADDED", headName, reciever.getName());
+				ItemStack itemAdded = Tools.addMobHead(reciever, headName, quantity);
+				if (itemAdded != null) {
+					String displayName = itemAdded.getItemMeta().getDisplayName();
+					return Lang.getMessageWithPrefix("HEAD_ADDED", displayName, reciever.getName());
 				} else {
-					return Lang.getMessageWithPrefix("HEAD_NOT_ADDED", headName, reciever.getName());
+					return Lang.getMessageWithPrefix("HEAD_NOT_ADDED", reciever.getName());
 				}
 			} else {
 				return "Player head does not suportted";

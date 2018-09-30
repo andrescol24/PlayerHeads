@@ -1,3 +1,4 @@
+# This File will be replaced each time that the plugin is reloaded
 CAVE_SPIDER:
   ==: org.bukkit.inventory.ItemStack
   type: SKULL_ITEM
