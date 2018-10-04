@@ -1,7 +1,8 @@
-package co.andrescol.playerheads;
+package co.andrescol.playerheads.mobs;
 
 import org.bukkit.Material;
-import org.shininet.bukkit.playerheads.Lang;
+
+import co.andrescol.playerheads.Lang;
 
 public enum MobHead {
 

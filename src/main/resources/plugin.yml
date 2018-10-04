@@ -1,9 +1,9 @@
 name: PlayerHeads
 version: 6.0.0
 description: Drops a player's head when s/he dies, also mob heads
-authors: [meiskam, xX_andrescol_Xx]
+authors: [xX_andrescol_Xx]
 api-version: 1.13
-main: org.shininet.bukkit.playerheads.PlayerHeads
+main: co.andrescol.playerheads.PlayerHeads
 
 commands:
   playerheads:

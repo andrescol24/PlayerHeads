@@ -1,10 +1,10 @@
-package org.shininet.bukkit.playerheads;
+package co.andrescol.playerheads;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import co.andrescol.playerheads.MobHeadsFactory;
+import co.andrescol.playerheads.mobs.MobHeadsFactory;
 
 /**
  * @author xX_andrescol_Xx

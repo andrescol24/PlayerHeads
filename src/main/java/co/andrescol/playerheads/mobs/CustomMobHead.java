@@ -1,11 +1,10 @@
-package co.andrescol.playerheads;
+package co.andrescol.playerheads.mobs;
 
-import org.shininet.bukkit.playerheads.Lang;
+import co.andrescol.playerheads.Lang;
 
 /**
- * Maintainer by xX_andrescol_Xx
  * Enum of mobs heads that map heads name with owner name
- * @author meiskam
+ * @author xX_andrescol_Xx
  */
 public enum CustomMobHead{
 

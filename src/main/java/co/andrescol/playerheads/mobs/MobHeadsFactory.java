@@ -1,4 +1,4 @@
-package co.andrescol.playerheads;
+package co.andrescol.playerheads.mobs;
 
 import java.io.File;
 import java.util.HashMap;
@@ -9,7 +9,8 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
-import org.shininet.bukkit.playerheads.PlayerHeads;
+
+import co.andrescol.playerheads.PlayerHeads;
 
 /**
  * Class that saves all mobs heads loaded from heads.yml

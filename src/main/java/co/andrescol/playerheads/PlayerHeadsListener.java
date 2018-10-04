@@ -1,4 +1,4 @@
-package org.shininet.bukkit.playerheads;
+package co.andrescol.playerheads;
 
 import java.util.Iterator;
 import java.util.List;
@@ -32,7 +32,7 @@ import org.shininet.bukkit.playerheads.events.FakeBlockBreakEvent;
 import org.shininet.bukkit.playerheads.events.MobDropHeadEvent;
 import org.shininet.bukkit.playerheads.events.PlayerDropHeadEvent;
 
-import co.andrescol.playerheads.CustomMobHead;
+import co.andrescol.playerheads.mobs.CustomMobHead;
 
 
 /**

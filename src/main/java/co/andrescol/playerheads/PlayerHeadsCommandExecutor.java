@@ -1,20 +1,16 @@
-package org.shininet.bukkit.playerheads;
-
-import java.util.ArrayList;
-import java.util.List;
+package co.andrescol.playerheads;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 /**
- * 
+ * Class 
  * @author xX_andrescol_Xx
  */
-public class PlayerHeadsCommandExecutor implements CommandExecutor, TabCompleter {
+public class PlayerHeadsCommandExecutor implements CommandExecutor {
 
 	private static final String CMD_RELOAD = "reload";
 	private static final String CMD_SPAWN = "spawn";
@@ -41,43 +37,29 @@ public class PlayerHeadsCommandExecutor implements CommandExecutor, TabCompleter
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		boolean isConsole = !(sender instanceof Player);
 		String message = null;
-		if (args.length == 0) {
+		if (args.length == 0 || !isSubCommand(args[0])) {
 			message = (sender.hasPermission("playerheads.commandinfo") || isConsole) 
 						? Lang.getInfo() : Lang.getMessageWithPrefix("ERROR_PERMISSION");
-		} else {
-			switch (args[0].toLowerCase()) {
-			case CMD_RELOAD:
-				if (sender.hasPermission("playerheads.reload") || isConsole) {
-					plugin.reload();
-					message = Lang.getMessageWithPrefix("CONFIG_RELOADED");
-				} else {
-					message = Lang.getMessageWithPrefix("ERROR_PERMISSION");
-				}
-				break;
-			case CMD_SPAWN:
-				if (sender instanceof Player) {
-					message = playerSpawnCommand((Player) sender, args);
-				} else {
-					message = consoleSpawnCommand(args);
-				}
-				break;
-			default:
-				if (sender.hasPermission("playerheads.commandinfo") || isConsole) {
-					message = Lang.getInfo();
-				} else {
-					message = Lang.getMessageWithPrefix("ERROR_PERMISSION");
-				}
+		} else if(args[0].equalsIgnoreCase(CMD_RELOAD)) {
+			if (sender.hasPermission("playerheads.reload") || isConsole) {
+				plugin.reload();
+				message = Lang.getMessageWithPrefix("CONFIG_RELOADED");
+			} else {
+				message = Lang.getMessageWithPrefix("ERROR_PERMISSION");
+			}
+		} else if(args[0].equalsIgnoreCase(CMD_SPAWN)) {
+			if(isConsole) {
+				message = Lang.getMessageWithPrefix("ONLY_PLAYERS");
+			} else {
+				message = executeSpawnCommand((Player) sender, args);
 			}
 		}
 		sender.sendMessage(message);
 		return true;
 	}
 	
-	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-		ArrayList<String> list = new ArrayList<>();
-		list.add("Hola");
-		return list;
+	private boolean isSubCommand(String subCommand) {
+		return subCommand.equalsIgnoreCase(CMD_RELOAD) || subCommand.equalsIgnoreCase(CMD_SPAWN);
 	}
 
 	/**
@@ -87,7 +69,7 @@ public class PlayerHeadsCommandExecutor implements CommandExecutor, TabCompleter
 	 * @param args   arguments
 	 * @return message related with spawn command
 	 */
-	private String playerSpawnCommand(Player sender, String[] args) {
+	private String executeSpawnCommand(Player sender, String[] args) {
 
 		SpawnParameter parameter = new SpawnParameter(sender, args);
 		if (parameter.isSelfSpawn()) {
@@ -120,43 +102,7 @@ public class PlayerHeadsCommandExecutor implements CommandExecutor, TabCompleter
 	}
 	
 	/**
-	 * Execute subcommand spawn for console
-	 * 
-	 * @param args arguments
-	 * @return message related with spawn command
-	 */
-	private String consoleSpawnCommand(String[] args) {
-
-		Player reciever = null;
-		// it needs receiver and head arguments
-		if (args.length < 3) {
-			return Lang.getMessageWithPrefix("ERROR_CONSOLE_SPAWN", Lang.getString("OPT_HEADNAME_REQUIRED"),
-					Lang.getString("OPT_RECEIVER_REQUIRED"), Lang.getString("OPT_AMOUNT_OPTIONAL"));
-		} else {
-			reciever = plugin.getServer().getPlayer(args[2]);
-			if (reciever == null) {
-				return Lang.getMessageWithPrefix("ERROR_NOT_ONLINE", args[2]);
-			}
-			int quantity = (args.length == 4) ? Integer.parseInt(args[3]) : 1;
-			String headName = args[1];
-			if (headName.startsWith("#")) {
-				ItemStack itemAdded = Tools.addMobHead(reciever, headName, quantity);
-				if (itemAdded != null) {
-					String displayName = itemAdded.getItemMeta().getDisplayName();
-					return Lang.getMessageWithPrefix("HEAD_ADDED", displayName, reciever.getName());
-				} else {
-					return Lang.getMessageWithPrefix("HEAD_NOT_ADDED", reciever.getName());
-				}
-			} else {
-				return "Player head does not suportted";
-			}
-		}
-	}
-	
-	/**
 	 * Class that define the spawn command parameters
-	 * @author AndresFernando
-	 *
 	 */
 	private class SpawnParameter {
 		

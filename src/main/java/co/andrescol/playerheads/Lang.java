@@ -1,4 +1,4 @@
-package org.shininet.bukkit.playerheads;
+package co.andrescol.playerheads;
 
 import java.io.File;
 import java.io.FileInputStream;

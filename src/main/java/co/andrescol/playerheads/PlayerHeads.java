@@ -1,4 +1,4 @@
-package org.shininet.bukkit.playerheads;
+package co.andrescol.playerheads;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -8,12 +8,11 @@ import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import co.andrescol.playerheads.MobHeadsFactory;
+import co.andrescol.playerheads.mobs.MobHeadsFactory;
 
 /**
- * maintainer by xX_andrescol_Xx
  * Main plugin class that start all features
- * @author meiskam
+ * @author xX_andrescol_Xx
  */
 public final class PlayerHeads extends JavaPlugin{
 

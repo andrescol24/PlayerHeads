@@ -1,17 +1,16 @@
-package org.shininet.bukkit.playerheads;
+package co.andrescol.playerheads;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
-import co.andrescol.playerheads.CustomMobHead;
+import co.andrescol.playerheads.mobs.CustomMobHead;
 
 /**
  * 
- * Maintainer by xX_andrescol_Xx
  * Static class that manages the configuration
- * @author meiskam
+ * @author xX_andrescol_Xx
  */
 public class Config {
     
