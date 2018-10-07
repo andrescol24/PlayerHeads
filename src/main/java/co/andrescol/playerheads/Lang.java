@@ -42,7 +42,7 @@ public final class Lang {
         try (InputStream input = new FileInputStream(langFile)){
             properties.load(new InputStreamReader(input, Charset.forName("UTF-8")));
             String prefix = properties.getProperty("PREFIX");
-            prefix = ChatColor.translateAlternateColorCodes('&', prefix);
+            Lang.prefix = ChatColor.translateAlternateColorCodes('&', prefix);
         }catch(IOException e){
             plugin.getLogger().log(Level.SEVERE, "The lang could not be started", e);
         }

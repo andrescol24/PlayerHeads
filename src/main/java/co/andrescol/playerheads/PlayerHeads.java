@@ -9,6 +9,7 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import co.andrescol.playerheads.mobs.MobHeadsFactory;
+import co.andrescol.playerheads.player.PlayerHeadsFactory;
 
 /**
  * Main plugin class that start all features
@@ -29,6 +30,7 @@ public final class PlayerHeads extends JavaPlugin{
         Lang.init(this);
         Config.init(this);
         MobHeadsFactory.init(this);
+        PlayerHeadsFactory.init(this);
         listener = new PlayerHeadsListener(this);
         commandExecutor = new PlayerHeadsCommandExecutor(this);
         getServer().getPluginManager().registerEvents(listener, this);
