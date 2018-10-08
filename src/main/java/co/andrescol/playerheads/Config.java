@@ -65,10 +65,9 @@ public class Config {
     private static void loadConfiguration(PlayerHeads plugin){
         
         FileConfiguration configFile = plugin.getConfig();
-        configuration.put("pkonly", configFile.getBoolean("pkonly"));
         configuration.put("droprate", configFile.getDouble("droprate"));
         configuration.put("lootingrate", configFile.getDouble("lootingrate"));
-        configuration.put("mobpkonly", configFile.getBoolean("mobpkonly"));
+        configuration.put("language", configFile.getString("language")); 
         configuration.put("creeperdroprate", configFile.getDouble("creeperdroprate"));
         configuration.put("zombiedroprate", configFile.getDouble("zombiedroprate"));
         configuration.put("skeletondroprate", configFile.getDouble("skeletondroprate"));
@@ -78,10 +77,6 @@ public class Config {
             String custonSkullTypeName = customSkullType.name().replace("_", "").toLowerCase() + "droprate";
             configuration.put(custonSkullTypeName, configFile.getDouble(custonSkullTypeName));
         }
-        configuration.put("broadcast", configFile.getBoolean("broadcast"));
-        configuration.put("broadcastrange", configFile.getInt("broadcastrange"));
-        configuration.put("antideathchest", configFile.getBoolean("antideathchest"));
-        configuration.put("dropboringplayerheads", configFile.getBoolean("dropboringplayerheads"));
     }
      
     /**

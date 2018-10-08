@@ -37,7 +37,15 @@ public final class Lang {
      */
     public static void init(PlayerHeads plugin) {
         properties = new Properties();
-        File langFile = new File(plugin.getDataFolder(), "lang.properties");
+        String language = Config.getValue("language");
+        File langFile = null;
+         if(language.equals("es")) {
+        	plugin.saveReourceFile("lang_es.properties");
+        	langFile = new File(plugin.getDataFolder(), "lang_es.properties");	
+        } else {
+        	plugin.saveReourceFile("lang.properties");
+        	langFile = new File(plugin.getDataFolder(), "lang.properties");	
+        }
         
         try (InputStream input = new FileInputStream(langFile)){
             properties.load(new InputStreamReader(input, Charset.forName("UTF-8")));

@@ -27,8 +27,8 @@ public final class PlayerHeads extends JavaPlugin{
     @Override
     public void onEnable() {
         saveReourceFiles();
-        Lang.init(this);
         Config.init(this);
+        Lang.init(this);
         MobHeadsFactory.init(this);
         PlayerHeadsFactory.init(this);
         listener = new PlayerHeadsListener(this);
@@ -63,8 +63,8 @@ public final class PlayerHeads extends JavaPlugin{
         // Enables
         saveReourceFiles();
         reloadConfig();
-        Lang.init(this);
         Config.init(this);
+        Lang.init(this);
         MobHeadsFactory.init(this);
     }
     
@@ -74,16 +74,28 @@ public final class PlayerHeads extends JavaPlugin{
     private void saveReourceFiles(){
         getConfig().options().copyDefaults(true);
         File config = new File(getDataFolder(), "config.yml");
-        File lang = new File(getDataFolder(), "lang.properties");
         File heads = new File(getDataFolder(), "heads.yml");
         try{
             if(!config.exists()){
                 saveDefaultConfig();
             }
-            if(!lang.exists())
-                saveResource("lang.properties", false);
             if(!heads.exists())
             	saveResource("heads.yml", true);
+        }catch(Exception e){
+            this.getLogger().log(Level.SEVERE, "Could not be saved plugin files", e);
+        }
+    }
+    
+    /**
+     * Save files on plugin server folder
+     * @param fileName the file name 
+     */
+    public void saveReourceFile(String fileName){
+        getConfig().options().copyDefaults(true);
+        File file = new File(getDataFolder(), fileName);
+        try{
+            if(!file.exists())
+            	saveResource(fileName, true);
         }catch(Exception e){
             this.getLogger().log(Level.SEVERE, "Could not be saved plugin files", e);
         }

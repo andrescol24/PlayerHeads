@@ -1,19 +1,15 @@
-# PlayerHeads Configuration
+# ----------------------------------- PlayerHeads Configuration -----------------------------------
 # Defaults/explanation:
-# pkonly: true                  [true/false]    When true trophies only drop when a player kills another player (as opposed to self drowning, etc)
-# droprate: 0.05                [0.0 -> 1.0]    Chance that a trophy will drop when a player dies (1 is 100%, 0 is never)
-# lootingrate: 0.2              [0.0 -> 1.0]    Increases all droprates by lootingrate percent per looting level when a enchanted weapon is used
-# mobpkonly: true               [true/false]    When true mob trophies only drop when a player kills the mob (as opposed to a lava blade or fall death)
+# droprate: 0.05                [0.0 -> 1.0]    Chance that a trophy will drop when a 
+#                                               player dies (1 is 100%, 0 is never)
+# lootingrate: 0.2              [0.0 -> 1.0]    Increases all droprates by lootingrate percent per 
+#                                               looting level when a enchanted weapon is used
 # {MobName}droprate: 0.005      [0.0 -> 1.0]    Chance that a mob trophy will drop when it dies
-# fixcase: true                 [true/false]    When spawning/renaming heads, will attempt to make the input case insensitive
-# broadcast: true               [true/false]    Sends a message when someone gets beheaded
-# broadcastrange: 0             [positive int]  Radial distance in meters in which other players will hear the broadcast message (0 is unlimited)
-# antideathchest: false         [true/false]    Do not allow other plugins to fiddle with dropping player heads, makes certain they drop on the ground
-# dropboringplayerheads: false  [true/false]    Drop plain heads when a player dies, instead of the player's head
-pkonly: true
+# language: default             [default, es]   Change the language configured (default is english 
+#                                               and es is Spanish). You can edit the language file
 droprate: 0.05
 lootingrate: 0.2
-mobpkonly: true
+language: default
 creeperdroprate: 0.005
 zombiedroprate: 0.002
 skeletondroprate: 0.002
@@ -65,7 +61,3 @@ parrotbluedroprate: 0.005
 parrotcyandroprate: 0.005
 parrotgreendroprate: 0.005
 parrotgraydroprate: 0.005
-broadcast: true
-broadcastrange: 0
-antideathchest: false
-dropboringplayerheads: false
