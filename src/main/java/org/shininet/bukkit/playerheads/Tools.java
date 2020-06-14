@@ -1,12 +1,8 @@
 package org.shininet.bukkit.playerheads;
 
-import java.util.Set;
 import org.andrescol.playerheads.SkullGenerator;
-
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.SkullType;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
